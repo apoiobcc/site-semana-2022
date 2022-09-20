@@ -7,10 +7,9 @@
         center-active
       >
         <a href="#sobre"><v-tab>Sobre</v-tab></a>
-        <a href=""><v-tab>Calendário</v-tab></a>
-        <a href=""><v-tab>Anos anteriores</v-tab></a>
-        <a href=""><v-tab>Como chegar</v-tab></a>
-        <a href=""><v-tab>Colaboradores</v-tab></a>
+        <a href="#calendario"><v-tab>Calendário</v-tab></a>
+        <a href="#como-chegar"><v-tab>Como chegar</v-tab></a>
+        <a href="#Colaboradores"><v-tab>Colaboradores</v-tab></a>
       </v-tabs>
     </v-row>
     <v-row no-gutters class="descricao">
@@ -52,7 +51,7 @@ export default {
     width: 500px;
     margin: auto;
     padding: 0.5rem;
-    text-align: center;
+    text-align: justify;
     font-family: 'Merriweather';
     font-size: 1rem;
 }
