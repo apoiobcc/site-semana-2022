@@ -3,9 +3,7 @@
     <template
       v-for="(item, index) in cards"
       :key="index">
-      <div
-        class="card"
-      >
+      <div class="card">
         <div class="icon">
           <v-icon>
             {{ item.icon }}
