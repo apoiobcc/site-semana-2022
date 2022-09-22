@@ -48,10 +48,9 @@ export default {
     justify-content: center;
 	}
   .descricao {
-    width: 500px;
-    margin: auto;
-    padding: 0.5rem;
+    width: 600px;
     text-align: justify;
+    color: #fff;
     font-family: 'Merriweather';
     font-size: 1rem;
 }
