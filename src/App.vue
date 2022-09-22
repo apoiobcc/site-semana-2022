@@ -1,19 +1,21 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      <v-container>
+        <HeaderSemana />
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderSemana from './components/HeaderSemana.vue'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    HeaderSemana,
   },
 
   data: () => ({
