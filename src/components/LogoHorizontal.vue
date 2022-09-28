@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-row mokoto">
+  <div class="d-flex flex-row mokoto" id="logo">
     <div class="number">XIII</div>
     <div class="lateral d-flex flex-column">
       <div class="superior">Semana da</div>
