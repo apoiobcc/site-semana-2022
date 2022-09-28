@@ -1,20 +1,20 @@
 <template>
   <div class="d-flex flex-column">
-  <div class="calendar-sec">
-    <CalendarioSemana />
-  </div>
-  <div class="map-sec">
-    <MapaSemana />
-  </div>
+    <div class="calendar-sec">
+      <CalendarioSemana />
+    </div>
+    <div class="map-sec">
+      <MapaSemana />
+    </div>
   </div>
 </template>
 
 <script>
-import CalendarioSemana from './CalendarioSemana.vue'
-import MapaSemana from './MapaSemana.vue'
+import CalendarioSemana from "./CalendarioSemana.vue";
+import MapaSemana from "./MapaSemana.vue";
 
 export default {
-  name: 'CalendarioESemana',
+  name: "CalendarioESemana",
 
   components: {
     CalendarioSemana,
@@ -24,7 +24,7 @@ export default {
   data: () => ({
     //
   }),
-}
+};
 </script>
 
 <style scoped>
