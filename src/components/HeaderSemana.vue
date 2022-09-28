@@ -7,7 +7,7 @@
         background-color="white"
         center-active
       >
-        <a href="#logo"><v-tab>Sobre</v-tab></a>
+        <a href="#top"><v-tab>Sobre</v-tab></a>
         <a href="#calendario"><v-tab>Calendário</v-tab></a>
         <a href="#como-chegar"><v-tab>Como chegar</v-tab></a>
         <a href="#colaboradores"><v-tab>Colaboradores</v-tab></a>
