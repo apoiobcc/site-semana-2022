@@ -15,22 +15,7 @@
             <v-row align="center" justify="center">
                 <v-col cols="6" lg="4" offset-lg="0">
                     <v-img src="@/assets/images/logopoatek.png"></v-img>
-                </v-col>
-                <v-col cols="6" lg="4" offset-lg="0">
-                    <v-img src="@/assets/images/logobcc.png"></v-img>
-                </v-col>
-                <v-col cols="6" lg="4" offset-lg="0">
-                    <v-img src="@/assets/images/logobcc.png"></v-img>
-                </v-col>
-                <v-col cols="6" lg="4" offset-lg="0">
-                    <v-img src="@/assets/images/logobcc.png"></v-img>
-                </v-col>
-                <v-col cols="6" lg="4" offset-lg="0">
-                    <v-img src="@/assets/images/logobcc.png"></v-img>
-                </v-col>
-                <v-col cols="6" lg="4" offset-lg="0">
-                    <v-img src="@/assets/images/logobcc.png"></v-img>
-                </v-col>
+                </v-col>            
             </v-row>
         </v-col>
     </v-footer>
@@ -41,10 +26,6 @@ footer {
   margin: 0;
   max-height: 25em;
   background-color: #ff5757;
-}
-
-p {
-    font-size: 16pt;
 }
 </style>
 
