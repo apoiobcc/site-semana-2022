@@ -20,8 +20,10 @@ import CalendarioEMapa from "./components/CalendarioEMapa.vue";
 import FooterSemana from  "./components/FooterSemana.vue"
 
 export default {
-  name: "App",
-
+  name: "XIII Semana da Computação 2022",
+  created() {
+    document.title = "XIII Semana da Computação 2022";
+  },
   components: {
     HeaderSemana,
     AtracoesSemana,
