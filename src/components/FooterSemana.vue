@@ -12,7 +12,7 @@
         </v-col>
 
         <v-col cols="8">
-            <v-row justify="center"><h2>Colaboradores</h2></v-row>
+            <v-row justify="center"><h2 id="colaboradores">Colaboradores</h2></v-row>
             <v-row align="center" justify="center">
                 <v-col cols="6" lg="4" offset-lg="0">
                     <v-img src="@/assets/images/logopoatek.png"></v-img>
