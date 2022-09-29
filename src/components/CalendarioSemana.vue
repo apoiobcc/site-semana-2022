@@ -1,5 +1,6 @@
 <template>
   <h1 id="calendario">Calendário</h1>
+  <template v-if="mostrarCalendario">
   <div class="d-flex d-row calendar">
     <v-tabs
       v-model="tab"
@@ -67,10 +68,23 @@
       </v-window>
     </div>
   </div>
+  </template>
+  <template v-else>
+    <div class="block-box">
+      <v-icon size="100">mdi-lock</v-icon>
+      <span class="block-text"><h2>O calendário ainda não está disponível :(</h2></span>
+    </div>
+  </template>
 </template>
 
 <script>
 export default {
+  props: {
+    mostrarCalendario: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     info: null,
     tab: null,
@@ -178,5 +192,18 @@ h1 {
 }
 .coffee-break {
   color: #fffd4c;
+}
+.block-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fffd4c;
+  font-family: "Merriweather Sans";
+}
+.block-text {
+  max-width: 300px;
+  text-align: center;
+  margin: 20px 0px;
 }
 </style>

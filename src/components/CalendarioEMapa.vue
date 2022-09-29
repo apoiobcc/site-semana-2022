@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <div class="calendar-sec">
-      <CalendarioSemana />
+      <CalendarioSemana mostrar-calendario />
     </div>
     <div class="map-sec">
       <MapaSemana />
