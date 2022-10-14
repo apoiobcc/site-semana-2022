@@ -17,6 +17,7 @@
               <v-img src="@/assets/images/logoopus.png"></v-img>
               <v-img src="@/assets/images/logopoatek.png"></v-img>
               <v-img src="@/assets/images/logotagimf.svg"></v-img>
+              <v-img src="@/assets/images/logoelo7.svg"></v-img>
             </v-row>
         </v-col>
     </v-footer>
