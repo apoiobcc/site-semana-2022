@@ -35,18 +35,18 @@
               <v-card
                 v-if="event.category == 'talk'"
                 color="#fff"
-                class="card-info"
+                class="card-info pa-3"
               >
-                <div class="d-flex flex-no-wrap justify-space-between">
+                <div class="d-flex justify-space-between">
                   <div>
-                    <v-card-title class="text-h5">
+                    <v-card-title class="text-h5 text-wrap">
                       {{ event.title }}
                     </v-card-title>
 
-                    <v-card-subtitle>{{ event.author }}</v-card-subtitle>
+                    <v-card-subtitle class="author">{{ event.author }}</v-card-subtitle>
                   </div>
 
-                  <v-avatar class="ma-3" size="70" rounded="0">
+                  <v-avatar class="ma-3" size="70" rounded="3">
                     <v-img :src="event.image"></v-img>
                   </v-avatar>
                 </div>
@@ -205,5 +205,8 @@ h1 {
   max-width: 300px;
   text-align: center;
   margin: 20px 0px;
+}
+.author {
+  margin-bottom: 20px;
 }
 </style>
