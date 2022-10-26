@@ -1,49 +1,52 @@
 <template>
-  <h1 id="calendario">Calendário</h1>
+<h1 class="text-center text-md-left" id="calendario">Calendário</h1>
   <template v-if="mostrarCalendario">
-  <div class="d-flex d-row calendar">
+  <div class="d-flex flex-column flex-md-row calendar">
     <v-tabs
       v-model="tab"
       color="#fffd4c"
       class="days"
-      direction="vertical"
+      :direction="calendarDirection"
       centered
       stacked
     >
       <v-tab v-for="tab in tabs" :key="tab" :value="tab"
-        ><p class="number">{{ tab.day }}</p>
-        <p class="weekday">{{ tab.weekday }}</p></v-tab
+        ><p class="number text-subtitle-2 text-md-h6 text-weight-bold">{{ tab.day }}</p>
+        <p class="weekday">{{ isMobile ? tab.weekday.substr(0, 3) + '.' : tab.weekday }}</p></v-tab
       >
     </v-tabs>
-    <div class="content">
+    <div class="content pl-md-2 pt-2 pt-md-0">
       <v-window v-model="tab">
         <v-window-item v-for="tab in tabs" :key="tab" :value="tab">
           <template v-for="event in tab.events" :key="event.startHour">
-            <div class="d-flex flex-no-wrap align-stretch event">
-              <div class="d-flex flex-no-wrap justify-center flex-column time">
-                <p>
-                  das
-                  <span class="hour"
-                    ><b>{{ event.startHour }}</b></span
-                  ><br />
+            <div class="d-flex flex-column flex-md-row flex-no-wrap align-stretch event">
+              <div class="d-flex flex-no-wrap justify-center flex-row flex-md-column mr-md-2 time">
+                  <span>
+                    das
+                    <span class="hour"
+                      ><b>{{ event.startHour }}</b></span
+                    > 
+                  </span>
+                  <span>
                   às
                   <span class="hour"
                     ><b>{{ event.endHour }}</b></span
                   >
-                </p>
+                  </span>
               </div>
               <v-card
                 v-if="event.category == 'talk'"
                 color="#fff"
-                class="card-info pa-3"
+                :rounded="isMobile ? 0 : 3"
+                class="card-info pa-3 rounded-b"
               >
                 <div class="d-flex justify-space-between">
                   <div>
-                    <v-card-title class="text-h5 text-wrap">
+                    <v-card-title class="text-h6 text-md-h5 text-wrap">
                       {{ event.title }}
                     </v-card-title>
 
-                    <v-card-subtitle class="author">{{ event.author }}</v-card-subtitle>
+                    <v-card-subtitle class="author text-wrap">{{ event.author }}</v-card-subtitle>
                   </div>
 
                   <v-avatar class="ma-3" size="70" rounded="3">
@@ -54,10 +57,11 @@
               <v-card
                 v-if="event.category == 'cb'"
                 color="rgba(0, 0, 0, 0.1)"
-                class="d-flex align-center justify-center card-info"
+                class="d-flex align-center justify-center rounded-b card-info"
+                :rounded="isMobile ? 0 : 3"
                 flat
               >
-                <v-card-title class="text-h7 coffee-break"
+                <v-card-title class="pa-8 pa-md-6 text-h7 coffee-break"
                   ><v-icon>mdi-coffee</v-icon
                   ><span class="px-4">{{ event.title }}</span></v-card-title
                 >
@@ -88,6 +92,7 @@ export default {
   data: () => ({
     info: null,
     tab: null,
+    isMobile: false,
     tabs: [
       {
         day: "24/10",
@@ -116,6 +121,18 @@ export default {
       },
     ],
   }),
+  beforeMount () {
+    this.isMobile = (window.innerWidth < 900);
+  },
+  computed: {
+    calendarDirection () {
+      if (!this.isMobile) {
+        return 'vertical'
+      } else {
+        return 'horizontal'
+      }
+    }
+  },
   async mounted() {
     const response = await fetch(
       "https://sheets.googleapis.com/v4/spreadsheets/1UlwfoFlbhlgoWafuOMFSMgT7OgsIizjljvDIgrVUTOc/values/Sheet1?key=" +
@@ -150,7 +167,7 @@ export default {
 <style scoped>
 h1 {
   margin: 20px 0px;
-  font-family: "Merriweather Sans";
+  font-family: "Merriweather Sans" !important;
   color: #fffd4c;
 }
 .calendar {
@@ -167,7 +184,6 @@ h1 {
   border-left: 2px solid #fffd4c;
   font-size: 12px;
   padding: 10px 20px;
-  margin-right: 10px;
 }
 .time .hour {
   font-size: 22px;
@@ -176,7 +192,6 @@ h1 {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-left: 10px;
 }
 .number {
   font-size: 22px;

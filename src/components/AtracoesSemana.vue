@@ -1,7 +1,7 @@
 <template>
-  <v-row class="bar">
+  <v-row class="bar ma-0">
     <template v-for="(item, index) in cards" :key="index">
-      <div class="card">
+      <div class="card d-flex flex-column align-center">
         <div class="icon">
           <v-icon>
             {{ item.icon }}
@@ -11,8 +11,9 @@
           {{ item.title }}
         </h3>
         <p class="desc">{{ item.desc }}</p>
+        <div v-if="index < cards.length - 1 && isMobile" class="hor-divider mt-6"></div>
       </div>
-      <div v-if="index < cards.length - 1" class="vert-divider"></div>
+      <div v-if="index < cards.length - 1 && !isMobile" class="vert-divider"></div>
     </template>
   </v-row>
 </template>
@@ -38,6 +39,11 @@ export default {
       },
     ],
   }),
+  computed: {
+    isMobile() {
+      return (window.innerWidth < 900)
+    }
+  }
 };
 </script>
 
@@ -79,11 +85,23 @@ h3 {
 .vert-divider {
   height: 120px;
   width: 1px;
-  background-image: linear-gradient(
+  background-color: white;
+  /*background-image: linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(255, 255, 255, 1),
     rgba(0, 0, 0, 0)
-  );
+  );*/
+}
+
+.hor-divider {
+  height: 1px;
+  width: 120px;
+  background-color: white;
+  /* background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0)
+  ) */
 }
 
 .v-card--reveal {
