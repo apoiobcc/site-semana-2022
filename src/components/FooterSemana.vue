@@ -1,6 +1,7 @@
 <template>
     <v-footer>
-        <v-col cols="12" lg="4">
+        <v-row justify="space-between" align="center">
+        <v-col cols="12" md="4">
             <v-row align="center" justify="center">
                 <v-col cols="12" lg="8" offset-lg="0">
                     <v-img class="ime-logo" src="@/assets/images/logoime.svg"></v-img>
@@ -11,14 +12,15 @@
             </v-row>
         </v-col>
 
-        <v-col cols="12" lg="6">
-          <v-row justify="center"><h2 id="colaboradores">Colaboradores</h2></v-row>
-          <v-row justify="center" class="pa-16">
-            <v-col v-for="partner in partners" :key="partner.name" cols="6" class="d-flex">
+        <v-col cols="12" md="6" class="pa-md-16">
+          <v-row justify="center"><h2 id="colaboradores" class="mt-16 text-h6 mt-md-0 text-md-h5 text-weight-bold colaborators">Colaboradores</h2></v-row>
+          <v-row justify="center">
+            <v-col v-for="partner in partners" :key="partner.name" cols="12" md="6" class="d-flex">
               <v-img :src="partner.img" :alt="partner.name"></v-img>
             </v-col>
           </v-row>
         </v-col>
+        </v-row>
     </v-footer>
 </template>
 
@@ -51,16 +53,10 @@
 footer {
   margin: 0;
   padding: 40px 100px;
-  justify-content: space-between;
   background-color: #272727;
 }
 .colaborators {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  font-family: "Merriweather Sans" !important;
 }
 .partners{
   display: flex;

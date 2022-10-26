@@ -1,25 +1,46 @@
 <template>
-  <div class="grafo2">
-    <img :src="require(`../assets/grafo.svg`)" height="600" />
+  <div :class="isMobile ? 'd-flex justify-center my-10' : 'grafo2'">
+    <img :src="require(`../assets/grafo.svg`)" :height="isMobile ? 200 : 600" />
   </div>
-  <div class="header">
-    <div class="header-top">
-      <LogoHorizontal />
-      <v-tabs class="header-tab" background-color="white" center-active>
-        <a href="#top"><v-tab>Sobre</v-tab></a>
-        <a href="#calendario"><v-tab>Calendário</v-tab></a>
-        <a href="#como-chegar"><v-tab>Como chegar</v-tab></a>
-        <a href="#colaboradores"><v-tab>Colaboradores</v-tab></a>
+  <div class="header" :class="!isMobile ? 'full-view' : ''">
+    <v-icon v-if="isMobile" class="menu-drawer" @click.stop="drawer = !drawer" color="white">mdi-menu</v-icon>
+    <v-navigation-drawer
+      v-model="drawer"
+      v-if="isMobile"
+      absolute
+      bottom
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <a v-for="page in pages" :key="page" :href="page.link" class="pagelink" @click.stop="drawer = !drawer">
+            <v-list-item>
+              <v-list-item-title>{{ page.name }}</v-list-item-title>
+            </v-list-item>
+            </a>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <div class="d-md-flex flex-md-row ma-0 justify-space-between">
+      <div :class="isMobile ? 'd-flex justify-center' : ''"><LogoHorizontal /></div>
+      <v-tabs v-if="!isMobile" class="header-tab" background-color="white" center-active>
+        <a v-for="page in pages" :key="page" :href="page.link"><v-tab>{{ page.name }}</v-tab></a>
       </v-tabs>
     </div>
-    <div class="about">
-      <p class="descricao">
+    <div class="about d-md-flex flex-md-column justify-space-between">
+      <p class="descricao my-md-12" :class="isMobile ? 'desc-mobile text-center' : ''">
         A semana da computação é uma semana de palestras que aborda diversos
         temas relacionados às áreas da computação. O evento é aberto a todo
         público e qualquer interessado pode assistir às palestras.
       </p>
 
-      <div class="my-16">
+      <div class="my-16 text-center text-md-left">
         <p class="days">
           <span class="top"
             >de <span class="number">24</span> a
@@ -42,6 +63,9 @@ export default {
     LogoHorizontal,
   },
   computed: {
+    isMobile () {
+      return (window.innerWidth < 900);
+    },
     options() {
       return {
         duration: 300,
@@ -50,15 +74,51 @@ export default {
       };
     },
   },
+  data: () => ({
+    drawer: false,
+    group: null,
+    pages: [
+      {
+        name: "Sobre",
+        link: "#top",
+      },
+      {
+        name: "Calendário",
+        link: "#calendario",
+      },
+      {
+        name: "Como Chegar",
+        link: "#como-chegar",
+      },
+      {
+        name: "Colaboradores",
+        link: "#colaboradores",
+      },
+    ],
+  }),
+  watch: {
+    group () {
+      this.drawer = false
+    },
+  },
 };
 </script>
 
 <style scoped>
 .header {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+.menu-drawer {
+  position: absolute;
+  top: 20px;
+}
+.full-view {
+  min-height: 100vh;
+}
+.pagelink {
+  color: black !important;
 }
 .header-top {
   display: flex;
@@ -79,9 +139,6 @@ a {
   justify-content: center;
 }
 .about {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   flex: 1;
 }
 .descricao {
@@ -89,7 +146,11 @@ a {
   color: #fff;
   font-family: "Merriweather Sans";
   font-size: 1em;
-  margin: 50px 0px;
+}
+.desc-mobile {
+  width: auto;
+  font-size: 1em;
+  margin: 30px 10px;
 }
 .grafo2 {
   width: 400px;
@@ -105,6 +166,10 @@ a {
   color: #fffd4c;
   line-height: 1.2;
   font-size: 22px;
+}
+.days-mobile {
+  font-size: 18px;
+  line-height: 1.4;
 }
 .local {
   font-family: "Merriweather Sans";
